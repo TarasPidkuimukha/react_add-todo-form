@@ -1,5 +1,5 @@
-import React from "react";
-import { UserInfo } from "../UserInfo";
+import React from 'react';
+import { UserInfo } from '../UserInfo';
 
 interface Todo {
   id: number;
@@ -17,14 +17,14 @@ interface User {
 type Props = {
   todo: Todo;
   user: User | null;
-}
+};
 
-export const TodoInfo: React.FC<Props> = ({ todo , user }) => (
+export const TodoInfo: React.FC<Props> = ({ todo, user }) => (
   <article
     className={`TodoInfo ${todo.completed ? 'TodoInfo--completed' : ''}`}
     data-id={todo.id}
   >
     <h2 className="TodoInfo__title">{todo.title}</h2>
-    {user && <UserInfo user={user}/>}
+    {user && <UserInfo user={user} />}
   </article>
 );
