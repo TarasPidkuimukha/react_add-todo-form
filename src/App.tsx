@@ -31,13 +31,15 @@ const initialTodos = todosFromServer.map(todo => ({
 }));
 
 export const App = () => {
-  const [todos, setTodos] = useState<Todo>(initialTodos);
+  const [todos, setTodos] = useState<Todo[]>(initialTodos);
   const [title, setTitle] = useState('');
   const [userId, setUserId] = useState<number | ''>('');
   const [titleError, setTitleError] = useState(false);
   const [userError, setUserError] = useState(false);
+
   const handleAdd = (event: React.FormEvent) => {
     event.preventDefault();
+
     if (!title || !userId) {
       setTitleError(!title);
       setUserError(!userId);
@@ -86,7 +88,7 @@ export const App = () => {
               setUserError(false);
             }}
           >
-            <option value="" disabled>
+            <option value="0" disabled>
               Choose a user
             </option>
             {usersFromServer.map(user => (
@@ -101,7 +103,7 @@ export const App = () => {
           Add
         </button>
       </form>
-      <TodoList todos={todos} users={usersFromServer} />
+      <TodoList todos={todos} />
     </div>
   );
 };
