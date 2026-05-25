@@ -7,6 +7,7 @@ import { TodoList } from './components/TodoList';
 interface User {
   id: number;
   name: string;
+  username: string;
   email: string;
 }
 
@@ -48,7 +49,7 @@ export const App = () => {
     }
 
     const newTodo = {
-      id: Math.max(...todos.map(t => t.id), 0) + 1,
+      id: Math.max(...todos.map(todo => todo.id), 0) + 1,
       title,
       completed: false,
       userId: Number(userId),
@@ -66,6 +67,7 @@ export const App = () => {
     <div className="App">
       <h1>Add todo form</h1>
       <form action="/api/todos" method="POST" onSubmit={handleAdd}>
+      <label htmlFor="titleInput">Title</label>
         <div className="field">
           <input
             type="text"
@@ -78,6 +80,7 @@ export const App = () => {
             }}
           />
           {titleError && <span className="error">Please enter a title</span>}
+          <label htmlFor="userSelect">User</label>
         </div>
         <div className="field">
           <select
