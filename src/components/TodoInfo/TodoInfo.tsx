@@ -15,7 +15,6 @@ interface Todo {
   user?: User | null;
 }
 
-
 type Props = {
   todo: Todo;
 };
