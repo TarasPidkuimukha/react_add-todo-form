@@ -34,7 +34,7 @@ const initialTodos = todosFromServer.map(todo => ({
 export const App = () => {
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
   const [title, setTitle] = useState('');
-  const [userId, setUserId] = useState<number | ''>('');
+  const [userId, setUserId] = useState<number>(0);
   const [titleError, setTitleError] = useState(false);
   const [userError, setUserError] = useState(false);
 
@@ -58,7 +58,7 @@ export const App = () => {
 
     setTodos([...todos, newTodo]);
     setTitle('');
-    setUserId('');
+    setUserId(0);
     setTitleError(false);
     setUserError(false);
   };
